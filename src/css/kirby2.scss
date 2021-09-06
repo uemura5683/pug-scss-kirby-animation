@@ -1,0 +1,340 @@
+$red: #af2d13;
+$dark_red_two: #752b42;
+$white: #ffffff;
+$black: #000000;
+$pink: #ff9db5;
+$dark_pink: #d77584;
+$dark_pink_two: #f0608b;
+$blue: #4b4796;
+$dark_blue: #2b3e5a;
+// breakpoint
+$breakpoints: (
+    'sm': 'screen and (max-width: 400px)',
+    'md': 'screen and (max-width: 768px)',
+    'lg': 'screen and (max-width: 1000px)',
+    'xl': 'screen and (max-width: 1200px)',
+) !default;
+
+@mixin mq($breakpoint: md) {
+    @media #{map-get($breakpoints, $breakpoint)} {
+        @content;
+    }
+}
+
+@mixin pseudos () {
+    content: "";
+}
+@mixin d-none () {
+    display: none;
+}
+div, input, label {
+    font-family: "Open Sans", "Hiragino Kaku Gothic ProN", "Meiryo", sans-serif;
+}
+input[type="checkbox"] {
+    @include d-none;
+}
+input[type="checkbox"] + label {
+    text-align: center;
+    display: inline-block;
+    border-radius: 1vw;
+    background-color: $red;
+    box-sizing: border-box;
+    box-shadow: .5vw .5vw 0 0 $dark_red_two;
+    padding: 1.5vw 3.0vw;
+    line-height: 1em;
+    color: $white;
+    font-size: 2vw;
+    font-weight: normal;
+    cursor: pointer;
+}
+#container {
+    .kirby_content {
+        position: absolute;
+        transform: translateX(-50%) translateY(-50%);
+        top: 50%;
+        left: 50%;
+        width: 25%;
+        height: auto;
+        .kirby_inner {
+            background: linear-gradient(135deg, $pink 70%, $dark_pink);
+            border-radius: 50%;
+            width: 100%;
+            padding: 100% 0 0;
+            box-shadow: 0 0 0 0.2vw black;
+            .eye, .mouth, .cheek, .hand, foot {
+                position: absolute;
+            }
+            .eye {
+                width: 10%;
+                padding: 30% 0 0;
+                background: $black;
+                border-radius: 44%;
+                top: 15%;
+                left: 34%;
+                /*animation: eyemove 1s ease-in-out infinite alternate;*/
+                &:after, &:before {
+                    @include pseudos;
+                }
+                &:before {
+                    background-color: $white;
+                    position: absolute;
+                    width: 60%;
+                    height: 45%;
+                    border-radius: 44%;
+                    top: 3%;
+                    left: 50%;
+                    transform: translateX(-50%);
+                    z-index: 2;
+                }
+                &.two {
+                    left: 65%;
+                    /*animation: eyemove2 1s ease-in-out infinite alternate;*/
+                }
+                .dark {
+                    position: absolute;
+                    width: 59%;
+                    height: 100%;
+                    top: 0;
+                    left: 50%;
+                    transform: translateX(-50%);
+                    &:before, &:after {
+                        @include pseudos;
+                    }
+                    &:before {
+                        background-color: black;
+                        position: absolute;
+                        width: 100%;
+                        height: 38%;
+                        border-radius: 44%;
+                        top: 47%;
+                        left: 50%;
+                        transform: translateX(-50%);
+                        z-index: 1;
+                    }
+                    &:after {
+                        background-color: $blue;
+                        position: absolute;
+                        width: 100%;
+                        height: 50%;
+                        border-radius: 44%;
+                        bottom: 3%;
+                        left: 50%;
+                        transform: translateX(-50%);
+                    }
+                }
+            }
+            .mouth {
+                width: 15%;
+                height: 8%;
+                box-shadow: 0 0.3vw 0 0 $black;
+                border-radius: 50%;
+                position: absolute;
+                top: 50%;
+                left: 56%;
+                z-index: 50;
+                transform: translateX(-50%);
+                /*animation: mouthmove 1s ease-in-out infinite alternate;*/
+                &:before {
+                    @include pseudos;
+                }
+            }
+            .cheek {
+                background-color: $dark_pink_two;
+                position: absolute;
+                top: 50%;
+                left:16%;
+                filter: blur(0.1vw);
+                width: 20%;
+                height: 10%;
+                border-radius: 50%;
+                transform: rotate(-10deg);
+                z-index: 3;
+                /*animation: cheekmove 1s ease-in-out infinite alternate;*/
+                &.two {
+                    left: auto;
+                    right: 5%;
+                    transform: rotate(10deg);
+                    /*animation: cheekmove2 1s ease-in-out infinite alternate;*/
+                }
+            }
+            .hand {
+                position: absolute;
+                top: 23%;
+                left: -15%;
+                background: linear-gradient(-155deg,$pink 70%,$dark_pink);
+                border-radius: 60% 40% 40% 60% / 60% 40% 60% 40%;
+                width: 30%;
+                padding: 30% 0 0;
+                box-shadow: 0 0 0 .2vw $black;
+                /*animation: handmove 1s ease-in-out infinite alternate;*/
+                &:after {
+                    @include pseudos;
+                    background: $pink;
+                    width: 50%;
+                    height: 100%;
+                    position: absolute;
+                    top: 0;
+                    right: -20%;
+                    transform: rotate(-3deg);
+                }
+                &.two {
+                    top: 7%;
+                    left: auto;
+                    right: -8%;
+                    background: linear-gradient(-35deg, #ff9db5 60%, #d77584);
+                    transform: rotate(135deg);
+                    box-shadow: 0 0 0 0.2vw #000000;
+                    z-index: -1;
+                    /*animation: handmove2 1s ease-in-out infinite alternate;*/
+                    &:after {
+                        @include pseudos;
+                        right: -20%;
+                        transform: rotate(11deg);
+                    }
+                }
+            }
+        }
+        [class*='foot']{
+            width: 50%;
+            height: 35%;
+            position: absolute;
+            background: #af2d13;
+            border-radius: 78% 22% 70% 30% / 59% 29% 71% 41%;
+            z-index: -1;
+            box-shadow: inset 0.5vw -1vw 0.2vw 0 #752b42, 0 0 0 0.2vw #000000;
+            }
+        .foot {
+            &-right {
+                bottom: 7%;
+                left: -20%;
+                transform: rotate(70deg);
+                /*animation: footmove 1s ease infinite alternate;*/
+            }
+            &-center {
+                right: 15%;
+                bottom: -18%;
+                transform: rotate(165deg);
+                /*animation: footmove2 1s ease infinite alternate;*/
+            }
+            &-left {
+                right: -25%;
+                bottom: 20%;
+                transform: rotate(115deg);
+                /*animation: footmove3 1s ease infinite alternate;*/
+            }
+        } 
+    }
+}
+@keyframes foot-mov{
+}
+@keyframes foot-mov-2{
+}
+@keyframes foot-mov-3{
+}
+
+@keyframes eyemove{
+    0%{
+        left: 34%;
+    }
+    50%{
+        left: 27%;
+    }
+    100%{
+        left: 34%;
+    }
+}
+
+@keyframes eyemove2{
+    0%{
+        left: 65%;
+    }
+    50%{
+        left: 58%;
+    }
+    100%{
+        left: 65%;
+    }
+}
+
+@keyframes cheekmove{
+    0%{
+        left: 16%;
+    }
+    50%{
+        left: 9%;
+    }
+    100%{
+        left: 16%;
+    }
+}
+
+@keyframes cheekmove2{
+    0%{
+        right: 5%;
+    }
+    50%{
+        right: 12%;
+    }
+    100%{
+        right: 5%;
+    }
+}
+
+
+@keyframes handmove{
+    0%{
+        top: 23%;
+    }
+    25%{
+        top: 35%;
+    }
+    50%{
+        top: 20%;
+        z-index: -1;
+    }
+    75%{
+        top: 35%;
+    }
+    100%{
+        top: 23%;
+    }
+}
+
+@keyframes handmove2{
+    0%{
+        top: 20%;
+    }
+    25%{
+        top: 35%;
+        z-index: 1;
+    }
+    50%{
+        top: 20%;
+    }
+    75%{
+        top: 35%;
+    }
+    100%{
+        top: 20%;
+    }
+}
+
+@keyframes mouthmove{
+    0%{
+        left: 56%;
+    }
+    50%{
+        left: 49%;
+    }
+    100%{
+        left: 56%;
+    }
+}
+
+@include mq {
+    #container {
+        .kirby_content {
+            width: 50%;
+        }
+    }
+}

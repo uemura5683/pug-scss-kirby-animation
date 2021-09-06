@@ -1,0 +1,323 @@
+div, input, label {
+  font-family: "Open Sans", "Hiragino Kaku Gothic ProN", "Meiryo", sans-serif;
+}
+
+input[type="checkbox"] {
+  display: none;
+}
+
+input[type="checkbox"] + label {
+  text-align: center;
+  display: inline-block;
+  border-radius: 1vw;
+  background-color: #af2d13;
+  box-sizing: border-box;
+  box-shadow: 0.5vw 0.5vw 0 0 #752b42;
+  padding: 1.5vw 3.0vw;
+  line-height: 1em;
+  color: #ffffff;
+  font-size: 2vw;
+  font-weight: normal;
+  cursor: pointer;
+}
+
+#container .kirby_content {
+  position: absolute;
+  transform: translateX(-50%) translateY(-50%);
+  top: 50%;
+  left: 50%;
+  width: 25%;
+  height: auto;
+}
+
+#container .kirby_content .kirby_inner {
+  background: linear-gradient(135deg, #ff9db5 70%, #d77584);
+  border-radius: 50%;
+  width: 100%;
+  padding: 100% 0 0;
+  box-shadow: 0 0 0 0.2vw black;
+}
+
+#container .kirby_content .kirby_inner .eye, #container .kirby_content .kirby_inner .mouth, #container .kirby_content .kirby_inner .cheek, #container .kirby_content .kirby_inner .hand, #container .kirby_content .kirby_inner foot {
+  position: absolute;
+}
+
+#container .kirby_content .kirby_inner .eye {
+  width: 10%;
+  padding: 30% 0 0;
+  background: #000000;
+  border-radius: 44%;
+  top: 15%;
+  left: 34%;
+  /*animation: eyemove 1s ease-in-out infinite alternate;*/
+}
+
+#container .kirby_content .kirby_inner .eye:after, #container .kirby_content .kirby_inner .eye:before {
+  content: "";
+}
+
+#container .kirby_content .kirby_inner .eye:before {
+  background-color: #ffffff;
+  position: absolute;
+  width: 60%;
+  height: 45%;
+  border-radius: 44%;
+  top: 3%;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 2;
+}
+
+#container .kirby_content .kirby_inner .eye.two {
+  left: 65%;
+  /*animation: eyemove2 1s ease-in-out infinite alternate;*/
+}
+
+#container .kirby_content .kirby_inner .eye .dark {
+  position: absolute;
+  width: 59%;
+  height: 100%;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+#container .kirby_content .kirby_inner .eye .dark:before, #container .kirby_content .kirby_inner .eye .dark:after {
+  content: "";
+}
+
+#container .kirby_content .kirby_inner .eye .dark:before {
+  background-color: black;
+  position: absolute;
+  width: 100%;
+  height: 38%;
+  border-radius: 44%;
+  top: 47%;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1;
+}
+
+#container .kirby_content .kirby_inner .eye .dark:after {
+  background-color: #4b4796;
+  position: absolute;
+  width: 100%;
+  height: 50%;
+  border-radius: 44%;
+  bottom: 3%;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+#container .kirby_content .kirby_inner .mouth {
+  width: 15%;
+  height: 8%;
+  box-shadow: 0 0.3vw 0 0 #000000;
+  border-radius: 50%;
+  position: absolute;
+  top: 50%;
+  left: 56%;
+  z-index: 50;
+  transform: translateX(-50%);
+  /*animation: mouthmove 1s ease-in-out infinite alternate;*/
+}
+
+#container .kirby_content .kirby_inner .mouth:before {
+  content: "";
+}
+
+#container .kirby_content .kirby_inner .cheek {
+  background-color: #f0608b;
+  position: absolute;
+  top: 50%;
+  left: 16%;
+  filter: blur(0.1vw);
+  width: 20%;
+  height: 10%;
+  border-radius: 50%;
+  transform: rotate(-10deg);
+  z-index: 3;
+  /*animation: cheekmove 1s ease-in-out infinite alternate;*/
+}
+
+#container .kirby_content .kirby_inner .cheek.two {
+  left: auto;
+  right: 5%;
+  transform: rotate(10deg);
+  /*animation: cheekmove2 1s ease-in-out infinite alternate;*/
+}
+
+#container .kirby_content .kirby_inner .hand {
+  position: absolute;
+  top: 23%;
+  left: -15%;
+  background: linear-gradient(-155deg, #ff9db5 70%, #d77584);
+  border-radius: 60% 40% 40% 60% / 60% 40% 60% 40%;
+  width: 30%;
+  padding: 30% 0 0;
+  box-shadow: 0 0 0 0.2vw #000000;
+  /*animation: handmove 1s ease-in-out infinite alternate;*/
+}
+
+#container .kirby_content .kirby_inner .hand:after {
+  content: "";
+  background: #ff9db5;
+  width: 50%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  right: -20%;
+  transform: rotate(-3deg);
+}
+
+#container .kirby_content .kirby_inner .hand.two {
+  top: 7%;
+  left: auto;
+  right: -8%;
+  background: linear-gradient(-35deg, #ff9db5 60%, #d77584);
+  transform: rotate(135deg);
+  box-shadow: 0 0 0 0.2vw #000000;
+  z-index: -1;
+  /*animation: handmove2 1s ease-in-out infinite alternate;*/
+}
+
+#container .kirby_content .kirby_inner .hand.two:after {
+  content: "";
+  right: -20%;
+  transform: rotate(11deg);
+}
+
+#container .kirby_content [class*='foot'] {
+  width: 50%;
+  height: 35%;
+  position: absolute;
+  background: #af2d13;
+  border-radius: 78% 22% 70% 30% / 59% 29% 71% 41%;
+  z-index: -1;
+  box-shadow: inset 0.5vw -1vw 0.2vw 0 #752b42, 0 0 0 0.2vw #000000;
+}
+
+#container .kirby_content .foot-right {
+  bottom: 7%;
+  left: -20%;
+  transform: rotate(70deg);
+  /*animation: footmove 1s ease infinite alternate;*/
+}
+
+#container .kirby_content .foot-center {
+  right: 15%;
+  bottom: -18%;
+  transform: rotate(165deg);
+  /*animation: footmove2 1s ease infinite alternate;*/
+}
+
+#container .kirby_content .foot-left {
+  right: -25%;
+  bottom: 20%;
+  transform: rotate(115deg);
+  /*animation: footmove3 1s ease infinite alternate;*/
+}
+
+@keyframes foot-mov {}@keyframes foot-mov-2 {}@keyframes foot-mov-3 {}@keyframes eyemove {
+  0% {
+    left: 34%;
+  }
+  50% {
+    left: 27%;
+  }
+  100% {
+    left: 34%;
+  }
+}
+
+@keyframes eyemove2 {
+  0% {
+    left: 65%;
+  }
+  50% {
+    left: 58%;
+  }
+  100% {
+    left: 65%;
+  }
+}
+
+@keyframes cheekmove {
+  0% {
+    left: 16%;
+  }
+  50% {
+    left: 9%;
+  }
+  100% {
+    left: 16%;
+  }
+}
+
+@keyframes cheekmove2 {
+  0% {
+    right: 5%;
+  }
+  50% {
+    right: 12%;
+  }
+  100% {
+    right: 5%;
+  }
+}
+
+@keyframes handmove {
+  0% {
+    top: 23%;
+  }
+  25% {
+    top: 35%;
+  }
+  50% {
+    top: 20%;
+    z-index: -1;
+  }
+  75% {
+    top: 35%;
+  }
+  100% {
+    top: 23%;
+  }
+}
+
+@keyframes handmove2 {
+  0% {
+    top: 20%;
+  }
+  25% {
+    top: 35%;
+    z-index: 1;
+  }
+  50% {
+    top: 20%;
+  }
+  75% {
+    top: 35%;
+  }
+  100% {
+    top: 20%;
+  }
+}
+
+@keyframes mouthmove {
+  0% {
+    left: 56%;
+  }
+  50% {
+    left: 49%;
+  }
+  100% {
+    left: 56%;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  #container .kirby_content {
+    width: 50%;
+  }
+}
