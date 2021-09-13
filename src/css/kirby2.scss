@@ -55,6 +55,29 @@ input[type="checkbox"] + label {
         left: 50%;
         width: 25%;
         height: auto;
+        animation: kirbymove .25s ease-in-out infinite;
+        .sweat {
+            width: 4%;
+            height: 18%;
+            position: absolute;
+            background: #A2EDF7;
+            z-index: 100;
+            border: 1px solid #A2EDF7;
+            border-radius: 72% 28% 100% 0% / 100% 16% 84% 0%;
+            top: -13%;
+            left: 10%;
+            transform: rotate(-35deg);
+            &:nth-child(2) {
+              top: -10%;
+              left: 0%;
+              transform: rotate(-55deg);
+            }
+            &:nth-child(3) {
+              top: -5%;
+              left: -10%;
+              transform: rotate(-75deg);
+            }
+        }
         .kirby_inner {
             background: linear-gradient(135deg, $pink 70%, $dark_pink);
             border-radius: 50%;
@@ -71,7 +94,6 @@ input[type="checkbox"] + label {
                 border-radius: 44%;
                 top: 15%;
                 left: 34%;
-                /*animation: eyemove 1s ease-in-out infinite alternate;*/
                 &:after, &:before {
                     @include pseudos;
                 }
@@ -88,7 +110,6 @@ input[type="checkbox"] + label {
                 }
                 &.two {
                     left: 65%;
-                    /*animation: eyemove2 1s ease-in-out infinite alternate;*/
                 }
                 .dark {
                     position: absolute;
@@ -124,18 +145,44 @@ input[type="checkbox"] + label {
                 }
             }
             .mouth {
-                width: 15%;
-                height: 8%;
-                box-shadow: 0 0.3vw 0 0 $black;
                 border-radius: 50%;
                 position: absolute;
                 top: 50%;
-                left: 56%;
+                left: 50%;
                 z-index: 50;
                 transform: translateX(-50%);
-                /*animation: mouthmove 1s ease-in-out infinite alternate;*/
+                height: 15%;
+                width: 12%;
+                border-radius: 42% 40% 37% 40% / 42% 40% 43% 49% ;
+                background: #752b42;
+                animation: mouthmove 1s ease-in-out infinite alternate;
+                &:after {
+                  @include pseudos;
+                  width: 100%;
+                  height: 100%;
+                  padding: 0% 0 0 0;
+                  position: absolute;
+                  background: white;
+                  filter: blur(2vw);
+                  will-change: filter;
+                  z-index: 500;
+                  border-radius: 60% 50% 50% 30% / 20% 30% 30% 50%;
+                  right: -60%;
+                  bottom: 0%;
+                  opacity: 0;
+                  animation: 1s linear infinite mokumoku 1s;
+                }
                 &:before {
                     @include pseudos;
+                    bottom: 3%;
+                    left: 50%;
+                    transform: translateX(-50%);
+                    width: 50%;
+                    height: 50%;
+                    border-radius: 42% 40% 37% 40% / 42% 40% 43% 49%;
+                    background: #f0608b;
+                    display: block;
+                    position: absolute;
                 }
             }
             .cheek {
@@ -149,23 +196,22 @@ input[type="checkbox"] + label {
                 border-radius: 50%;
                 transform: rotate(-10deg);
                 z-index: 3;
-                /*animation: cheekmove 1s ease-in-out infinite alternate;*/
                 &.two {
                     left: auto;
                     right: 5%;
                     transform: rotate(10deg);
-                    /*animation: cheekmove2 1s ease-in-out infinite alternate;*/
                 }
             }
             .hand {
                 position: absolute;
-                top: 23%;
-                left: -15%;
-                background: linear-gradient(-155deg,$pink 70%,$dark_pink);
+                top: 9%;
+                left: -9%;
+                background: linear-gradient(-155deg, #ff9db5 70%, #d77584);
                 border-radius: 60% 40% 40% 60% / 60% 40% 60% 40%;
                 width: 30%;
                 padding: 30% 0 0;
-                box-shadow: 0 0 0 .2vw $black;
+                box-shadow: 0 0 0 0.2vw #000000;
+                transform: rotate( 20deg);
                 /*animation: handmove 1s ease-in-out infinite alternate;*/
                 &:after {
                     @include pseudos;
@@ -205,131 +251,117 @@ input[type="checkbox"] + label {
             }
         .foot {
             &-right {
-                bottom: 7%;
-                left: -20%;
+                bottom: -4%;
+                left: -15%;
                 transform: rotate(70deg);
-                /*animation: footmove 1s ease infinite alternate;*/
+                animation: foot-mov .1s ease-in-out infinite;
             }
             &-center {
                 right: 15%;
                 bottom: -18%;
-                transform: rotate(165deg);
-                /*animation: footmove2 1s ease infinite alternate;*/
+                transform: rotate(20deg);
+                animation: foot-mov-2 .1s ease-in-out infinite;
             }
             &-left {
                 right: -25%;
                 bottom: 20%;
-                transform: rotate(115deg);
-                /*animation: footmove3 1s ease infinite alternate;*/
+                transform: rotate(-45deg);
+                animation: foot-mov-3 .1s ease-in-out infinite;
             }
         } 
     }
 }
 @keyframes foot-mov{
+    0%{
+        bottom: -4%;
+        left: -15%;
+        ransform: rotate(70deg);
+    }
+    50%{
+        bottom: 25%;
+        left: -29%;
+        transform: rotate(90deg);
+    }
+    100%{
+        bottom: -4%;
+        left: -15%;
+        ransform: rotate(70deg);
+    }
 }
 @keyframes foot-mov-2{
+    0%{
+        right: 15%;
+        bottom: -18%;
+        transform: rotate(20deg);
+    }
+    50%{
+        right: 45%;
+        bottom: -18%;
+        transform: rotate(48deg);
+    }
+    100%{
+        right: 15%;
+        bottom: -18%;
+        transform: rotate(20deg);
+    }
 }
 @keyframes foot-mov-3{
-}
-
-@keyframes eyemove{
     0%{
-        left: 34%;
+        right: -25%;
+        bottom: 20%;
+        transform: rotate(-45deg);
     }
     50%{
-        left: 27%;
+        right: -19%;
+        bottom: -3%;
+        transform: rotate(-32deg);
     }
     100%{
-        left: 34%;
+        right: -25%;
+        bottom: 20%;
+        transform: rotate(-45deg);    
     }
 }
-
-@keyframes eyemove2{
-    0%{
-        left: 65%;
-    }
-    50%{
-        left: 58%;
-    }
-    100%{
-        left: 65%;
-    }
+@keyframes kirbymove{
+  0%{
+    transform: translateX(-50%) translateY(-50%);
+  }
+  50%{
+    transform: translateX(-48%) translateY(-50%);
+  }
+  100%{
+    transform: translateX(-50%) translateY(-50%);
+  }
 }
-
-@keyframes cheekmove{
-    0%{
-        left: 16%;
-    }
-    50%{
-        left: 9%;
-    }
-    100%{
-        left: 16%;
-    }
+@keyframes mokumoku { 
+    0% { opacity: 0; top: 0;} 
+    10% { opacity: 1; top: 0%;} 
+    75% { opacity: 1; top: -50%;} 
+    100% { opacity: 0; top: -50%;}
 }
-
-@keyframes cheekmove2{
-    0%{
-        right: 5%;
-    }
-    50%{
-        right: 12%;
-    }
-    100%{
-        right: 5%;
-    }
+@keyframes mouthmove {
+  0%{
+    transform: scale(1);
+    left: 50%;
+  }
+  50%{
+    transform: scale(1.1);
+    left: 50%;
+  }
+  100%{
+    transform: scale(1);
+    left: 50%;
+  }
 }
-
 
 @keyframes handmove{
-    0%{
-        top: 23%;
-    }
-    25%{
-        top: 35%;
-    }
-    50%{
-        top: 20%;
-        z-index: -1;
-    }
-    75%{
-        top: 35%;
-    }
-    100%{
-        top: 23%;
-    }
+
 }
 
 @keyframes handmove2{
-    0%{
-        top: 20%;
-    }
-    25%{
-        top: 35%;
-        z-index: 1;
-    }
-    50%{
-        top: 20%;
-    }
-    75%{
-        top: 35%;
-    }
-    100%{
-        top: 20%;
-    }
+
 }
 
-@keyframes mouthmove{
-    0%{
-        left: 56%;
-    }
-    50%{
-        left: 49%;
-    }
-    100%{
-        left: 56%;
-    }
-}
 
 @include mq {
     #container {
