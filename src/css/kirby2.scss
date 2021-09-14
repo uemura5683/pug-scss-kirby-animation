@@ -1,3 +1,6 @@
+/**
+* color
+**/
 $red: #af2d13;
 $dark_red_two: #752b42;
 $white: #ffffff;
@@ -7,46 +10,48 @@ $dark_pink: #d77584;
 $dark_pink_two: #f0608b;
 $blue: #4b4796;
 $dark_blue: #2b3e5a;
-// breakpoint
+/**
+* breakpoints
+**/
 $breakpoints: (
     'sm': 'screen and (max-width: 400px)',
     'md': 'screen and (max-width: 768px)',
     'lg': 'screen and (max-width: 1000px)',
     'xl': 'screen and (max-width: 1200px)',
 ) !default;
-
+/**
+* mixin
+**/
 @mixin mq($breakpoint: md) {
     @media #{map-get($breakpoints, $breakpoint)} {
         @content;
     }
 }
-
+@mixin eye_before {
+    top: 3%;
+    background-color: #ffffff;
+    width: 60%;
+    height: 45%
+}
+@mixin eye_after {
+    top: 60%;
+    background-color: black;
+    width: 200%;
+    height: 2%;
+}
+@mixin eye_inner_before {
+    background: black;
+}
+@mixin eye_inner_after {
+    background: transparent;
+}
 @mixin pseudos () {
     content: "";
 }
 @mixin d-none () {
     display: none;
 }
-div, input, label {
-    font-family: "Open Sans", "Hiragino Kaku Gothic ProN", "Meiryo", sans-serif;
-}
-input[type="checkbox"] {
-    @include d-none;
-}
-input[type="checkbox"] + label {
-    text-align: center;
-    display: inline-block;
-    border-radius: 1vw;
-    background-color: $red;
-    box-sizing: border-box;
-    box-shadow: .5vw .5vw 0 0 $dark_red_two;
-    padding: 1.5vw 3.0vw;
-    line-height: 1em;
-    color: $white;
-    font-size: 2vw;
-    font-weight: normal;
-    cursor: pointer;
-}
+
 #container {
     .kirby_content {
         position: absolute;
@@ -66,16 +71,19 @@ input[type="checkbox"] + label {
             border-radius: 72% 28% 100% 0% / 100% 16% 84% 0%;
             top: -13%;
             left: 10%;
+            animation: sweat 1s ease-in-out infinite;
             transform: rotate(-35deg);
             &:nth-child(2) {
               top: -10%;
               left: 0%;
               transform: rotate(-55deg);
+              animation: sweat2 1s ease-in-out infinite;
             }
             &:nth-child(3) {
               top: -5%;
               left: -10%;
               transform: rotate(-75deg);
+              animation: sweat3 1s ease-in-out infinite;
             }
         }
         .kirby_inner {
@@ -83,7 +91,7 @@ input[type="checkbox"] + label {
             border-radius: 50%;
             width: 100%;
             padding: 100% 0 0;
-            box-shadow: 0 0 0 0.2vw black;
+            box-shadow: 0 0 0 0.2vw $black;
             .eye, .mouth, .cheek, .hand, foot {
                 position: absolute;
             }
@@ -94,6 +102,7 @@ input[type="checkbox"] + label {
                 border-radius: 44%;
                 top: 15%;
                 left: 34%;
+                animation: eye 5s ease-out infinite;
                 &:after, &:before {
                     @include pseudos;
                 }
@@ -107,6 +116,7 @@ input[type="checkbox"] + label {
                     left: 50%;
                     transform: translateX(-50%);
                     z-index: 2;
+                    animation: eye-before 5s ease-out infinite;
                 }
                 &.two {
                     left: 65%;
@@ -212,7 +222,6 @@ input[type="checkbox"] + label {
                 padding: 30% 0 0;
                 box-shadow: 0 0 0 0.2vw #000000;
                 transform: rotate( 20deg);
-                /*animation: handmove 1s ease-in-out infinite alternate;*/
                 &:after {
                     @include pseudos;
                     background: $pink;
@@ -231,7 +240,6 @@ input[type="checkbox"] + label {
                     transform: rotate(135deg);
                     box-shadow: 0 0 0 0.2vw #000000;
                     z-index: -1;
-                    /*animation: handmove2 1s ease-in-out infinite alternate;*/
                     &:after {
                         @include pseudos;
                         right: -20%;
@@ -271,98 +279,22 @@ input[type="checkbox"] + label {
         } 
     }
 }
-@keyframes foot-mov{
-    0%{
-        bottom: -4%;
-        left: -15%;
-        ransform: rotate(70deg);
-    }
-    50%{
-        bottom: 25%;
-        left: -29%;
-        transform: rotate(90deg);
-    }
-    100%{
-        bottom: -4%;
-        left: -15%;
-        ransform: rotate(70deg);
-    }
-}
-@keyframes foot-mov-2{
-    0%{
-        right: 15%;
-        bottom: -18%;
-        transform: rotate(20deg);
-    }
-    50%{
-        right: 45%;
-        bottom: -18%;
-        transform: rotate(48deg);
-    }
-    100%{
-        right: 15%;
-        bottom: -18%;
-        transform: rotate(20deg);
-    }
-}
-@keyframes foot-mov-3{
-    0%{
-        right: -25%;
-        bottom: 20%;
-        transform: rotate(-45deg);
-    }
-    50%{
-        right: -19%;
-        bottom: -3%;
-        transform: rotate(-32deg);
-    }
-    100%{
-        right: -25%;
-        bottom: 20%;
-        transform: rotate(-45deg);    
-    }
-}
-@keyframes kirbymove{
-  0%{
-    transform: translateX(-50%) translateY(-50%);
-  }
-  50%{
-    transform: translateX(-48%) translateY(-50%);
-  }
-  100%{
-    transform: translateX(-50%) translateY(-50%);
-  }
-}
-@keyframes mokumoku { 
-    0% { opacity: 0; top: 0;} 
-    10% { opacity: 1; top: 0%;} 
-    75% { opacity: 1; top: -50%;} 
-    100% { opacity: 0; top: -50%;}
-}
-@keyframes mouthmove {
-  0%{
-    transform: scale(1);
-    left: 50%;
-  }
-  50%{
-    transform: scale(1.1);
-    left: 50%;
-  }
-  100%{
-    transform: scale(1);
-    left: 50%;
-  }
-}
 
-@keyframes handmove{
-
+@keyframes foot-mov{ 0%{ bottom: -4%; left: -15%; ransform: rotate(70deg); } 50%{ bottom: 25%; left: -29%; transform: rotate(90deg); } 100%{ bottom: -4%; left: -15%; ransform: rotate(70deg); } }
+@keyframes foot-mov-2{ 0%{ right: 15%; bottom: -18%; transform: rotate(20deg); } 50%{ right: 45%; bottom: -18%; transform: rotate(48deg); } 100%{ right: 15%; bottom: -18%; transform: rotate(20deg); } }
+@keyframes foot-mov-3{ 0%{ right: -25%; bottom: 20%; transform: rotate(-45deg); } 50%{ right: -19%; bottom: -3%; transform: rotate(-32deg); } 100%{ right: -25%; bottom: 20%; transform: rotate(-45deg); } }
+@keyframes kirbymove{ 0%{ transform: translateX(-50%) translateY(-50%); } 50%{ transform: translateX(-48%) translateY(-50%); } 100%{ transform: translateX(-50%) translateY(-50%); } }
+@keyframes mokumoku { 0% { opacity: 0; top: 0;} 10% { opacity: 1; top: 0%;} 75% { opacity: 1; top: -50%;} 100% { opacity: 0; top: -50%;} }
+@keyframes sweat { 0% { opacity: 0; top: -13;} 10% { opacity: 1; top: -13%;} 75% { opacity: 1; top: -17%;} 100% { opacity: 0; top: -17%;} }
+@keyframes sweat2 { 0% { opacity: 0; top: -10;} 10% { opacity: 1; top: -10%;} 75% { opacity: 1; top: -14%;} 100% { opacity: 0; top: -14%;} }
+@keyframes sweat3 { 0% { opacity: 0; top: -5;} 10% { opacity: 1; top: -5%;} 75% { opacity: 1; top: -9%;} 100% { opacity: 0; top: -9%;} }
+@keyframes mouthmove { 0%{ transform: scale(1); left: 50%; } 50%{ transform: scale(1.1); left: 50%; } 100%{ transform: scale(1); left: 50%; } }
+@keyframes eye{
+  0%{ @include eye_inner_before; } 51%{ @include eye_inner_before; } 51.5%{ @include eye_inner_after; } 52%{ @include eye_inner_before; } 52.5%{ @include eye_inner_after; } 53%{ @include eye_inner_before; } 98%{ @include eye_inner_before; } 98.5% { @include eye_inner_after; } 99%{ @include eye_inner_before; } 99.5%{ @include eye_inner_after; } 100%{ @include eye_inner_before; }
 }
-
-@keyframes handmove2{
-
+@keyframes eye-before{
+  0%{ @include eye_before; } 51%{ @include eye_before; } 51.5%{ @include eye_after; } 52%{ @include eye_before; } 52.5%{ @include eye_after; } 53%{ @include eye_before; } 98%{ @include eye_before; } 98.5%{ @include eye_after; } 99%{ @include eye_before; } 99.5%{ @include eye_after; } 100%{ @include eye_before; }
 }
-
-
 @include mq {
     #container {
         .kirby_content {
